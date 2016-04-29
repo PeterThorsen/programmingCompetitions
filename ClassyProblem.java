@@ -56,7 +56,7 @@ public class ClassyProblem {
 			array[i] = key;
 			i++;
 		}
-		array = mergeSort(array, 0, array.length-1); // -1 or not in length
+		array = mergeSort(array, 0, array.length-1); 
 		for(String s : array) {
 			System.out.println(s);
 		}
@@ -67,7 +67,6 @@ public class ClassyProblem {
 	private String[] mergeSort(String[] array, int p, int r) {
 		if(p < r) {
 			int q = (p + r)/2;
-			//System.out.println("p, r, q: " + p +", " + r + ", " + q + " <--- should work as intented");
 			array = mergeSort(array, p, q);
 			array = mergeSort(array, q+1, r);
 			array = merge(array, p, q, r);
@@ -78,12 +77,11 @@ public class ClassyProblem {
 	private String[] merge(String[] array, int p, int q, int r) {
 		int n1 = q-p+1;
 		int n2 = r-q;
-		//System.out.println("p, q, r, n1, n2 " + p+q+r+n1+n2);
 		String[] L = new String[n1+1]; // n1+1 because of below L[n1]
 		String[] R = new String[n2+1]; // n2+1 because of below R[n2]
 
 		for(int i = 0; i<n1; i++) {
-			L[i] = array[p+i]; // ikke som i bog
+			L[i] = array[p+i]; 
 		}
 		for(int i = 0; i<n2; i++) {
 			R[i] = array[q+i+1];
@@ -95,14 +93,11 @@ public class ClassyProblem {
 		int j = 0;
 
 		for(int k=p; k<r+1; k++) {
-			//System.out.println("Comparing " + L[i] + " and " + R[j]);
 			if(compare(L[i], R[j])) {
-				//System.out.println(L[i] + " > " + R[j]);
 				array[k] = L[i];
 				i++;
 			}
 			else {
-				//System.out.println(L[i] + " < " + R[j]);
 				array[k] = R[j];
 				j++;
 			}
@@ -113,7 +108,7 @@ public class ClassyProblem {
 	private boolean compare(String left, String right) {
 		String[] leftArray;
 		String[] rightArray;
-		if(left.equals("lastElementUnique")) { // just return false?
+		if(left.equals("lastElementUnique")) { 
 			return false;
 		}
 		if(right.equals("lastElementUnique")) {
@@ -127,7 +122,7 @@ public class ClassyProblem {
 
 		while(true) {
 			if(sizeLeft < 0 && sizeRight < 0) {
-				return sortAlphabetical(left, right); // equal in everything inclusive size, order doesn't matter
+				return sortAlphabetical(left, right); // equal in everything inclusive size
 			}
 
 			String leftWord;
@@ -175,11 +170,6 @@ public class ClassyProblem {
 			sizeRight--;
 
 		}
-
-		// tjek size af begge, undg� null pointer ved at g� i minus
-		// tjek om string.split er forskellig (upper ift. middle)
-		// Hvis right er st�rre, return true, ellers false
-		// Hvis de er lig, sammenlign n�ste led 
 	}
 
 	// Return true if left is before right alphabetically
